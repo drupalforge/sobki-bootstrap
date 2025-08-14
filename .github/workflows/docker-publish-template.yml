@@ -1,9 +1,12 @@
 name: Docker build and push template
 on:
+  schedule:
+    # Rebuild every first day of the month at 6am.
+    - cron: '0 6 1 * *'
   push:
     branches:
       - "main"
-      - test/*
+      - "test"
   workflow_dispatch:
 jobs:
   build-application:
